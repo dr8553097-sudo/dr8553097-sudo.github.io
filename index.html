@@ -391,21 +391,42 @@
                 </div>
 
                 <!-- Live Server IP Display Box -->
-                <div class="space-y-2">
-                  <div class="p-3.5 rounded-xl bg-slate-950/80 border border-purple-700/50 flex items-center justify-between font-mono text-xs">
+                <div class="space-y-2.5">
+                  <!-- Java Edition Card -->
+                  <div class="p-3.5 rounded-xl bg-slate-950/90 border border-purple-700/60 flex items-center justify-between font-mono text-xs shadow-inner">
                     <div class="text-left">
-                      <div class="text-[10px] text-purple-400 font-bold uppercase tracking-wider">IP Java / Bedrock</div>
-                      <div class="text-purple-200 font-bold text-sm select-all">play.aurexcraft.net</div>
+                      <div class="text-[10px] text-purple-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fab fa-java text-amber-400"></i>
+                        <span>IP JAVA EDITION</span>
+                      </div>
+                      <div class="text-purple-100 font-bold text-sm select-all mt-0.5">ly08.astrolnodes.net:25629</div>
                     </div>
-                    <button onclick="copyToClipboard('play.aurexcraft.net', '¡IP de Java copiada!')" class="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-sans text-xs font-bold transition flex items-center gap-1.5 shadow-md">
+                    <button onclick="copyToClipboard('ly08.astrolnodes.net:25629', '¡IP de Java copiada!')" class="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-sans text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-purple-900/40">
                       <i class="fas fa-copy"></i>
                       <span>Copiar</span>
                     </button>
                   </div>
 
-                  <div class="p-3 rounded-xl bg-slate-950/60 border border-purple-800/30 flex items-center justify-between font-mono text-xs">
-                    <span class="text-purple-400 font-semibold">Puerto Bedrock:</span>
-                    <span class="text-white font-bold">25629</span>
+                  <!-- Bedrock Edition Card -->
+                  <div class="p-3.5 rounded-xl bg-slate-950/80 border border-purple-800/40 flex items-center justify-between font-mono text-xs">
+                    <div class="text-left">
+                      <div class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fas fa-mobile-screen text-cyan-400"></i>
+                        <span>BEDROCK (MÓVIL / CONSOLAS)</span>
+                      </div>
+                      <div class="text-slate-200 font-semibold text-xs mt-0.5">
+                        Host: <span class="text-purple-200 font-bold select-all">ly08.astrolnodes.net</span> | Puerto: <span class="text-cyan-300 font-bold select-all">25629</span>
+                      </div>
+                    </div>
+                    <button onclick="copyToClipboard('ly08.astrolnodes.net', '¡Host de Bedrock copiado!')" class="px-3 py-1.5 rounded-lg purple-glass hover:border-cyan-400/50 text-cyan-300 font-sans text-xs font-bold transition flex items-center gap-1.5">
+                      <i class="fas fa-copy"></i>
+                      <span>Copiar</span>
+                    </button>
+                  </div>
+
+                  <!-- Numeric IP Alternative -->
+                  <div class="text-[11px] font-mono text-purple-400/70 text-center">
+                    IP Numérica alternativa: <span class="text-purple-300 select-all cursor-pointer font-bold" onclick="copyToClipboard('199.127.60.37:25629', '¡IP numérica copiada!')">199.127.60.37:25629</span>
                   </div>
                 </div>
 
