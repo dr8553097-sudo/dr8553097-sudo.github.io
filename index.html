@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dafealru — Minecraft Plugin Developer</title>
-  <meta name="description" content="Portafolio oficial de Dafealru, desarrollador de plugins de Minecraft para Paper y Spigot 1.21+. Creador de StaffCore.">
-  <meta name="theme-color" content="#0d1117">
+  <title>Dafealru — Lead Developer & Minecraft Plugin Architect</title>
+  <meta name="description" content="Portafolio oficial de Dafealru. Lead Developer de AurexCraft Network y creador de StaffCore. Especialista en Paper/Spigot 1.21+ y Java 21.">
+  <meta name="theme-color" content="#080410">
 
   <!-- Favicon -->
-  <link rel="icon" href="https://raw.githubusercontent.com/dr8553097-sudo/StaffCore/main/src/main/resources/plugin.yml" type="image/x-icon">
+  <link rel="icon" href="https://img.icons8.com/fluency/96/minecraft-sword.png" type="image/png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
+  <!-- Font Awesome Pro/Free Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <script>
@@ -26,31 +26,49 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['Outfit', 'sans-serif'],
             mono: ['Fira Code', 'monospace'],
           },
           colors: {
-            brand: {
-              cyan: '#00F0FF',
-              emerald: '#00FF88',
-              purple: '#7928CA',
-              dark: '#0a0d14',
-              card: '#111726',
-              border: '#1e293b'
+            aurex: {
+              50: '#faf5ff',
+              100: '#f3e8ff',
+              200: '#e9d5ff',
+              300: '#d8b4fe',
+              400: '#c084fc',
+              500: '#a855f7',
+              600: '#9333ea',
+              700: '#7e22ce',
+              800: '#581c87',
+              900: '#3b0764',
+              950: '#1e0038',
+              glow: '#c77dff',
+              deep: '#080410',
+              card: '#120924',
+              border: '#2e1065',
+              neon: '#9d4edd',
+              lavender: '#e0aaff',
+              cyan: '#00F0FF'
             }
           },
           animation: {
-            'glow-pulse': 'glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'float': 'float 4s ease-in-out infinite',
+            'glow-pulse': 'purpleGlow 4s ease-in-out infinite alternate',
+            'float': 'floating 3.5s ease-in-out infinite alternate',
+            'spin-slow': 'spin 18s linear infinite',
+            'badge-pulse': 'badgePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
           },
           keyframes: {
-            glow: {
-              '0%, 100%': { opacity: 0.6, transform: 'scale(1)' },
-              '50%': { opacity: 1, transform: 'scale(1.05)' },
+            purpleGlow: {
+              '0%': { opacity: 0.35, transform: 'scale(0.95)' },
+              '100%': { opacity: 0.75, transform: 'scale(1.15)' },
             },
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-8px)' },
+            floating: {
+              '0%': { transform: 'translateY(0px)' },
+              '100%': { transform: 'translateY(-10px)' },
+            },
+            badgePulse: {
+              '0%, 100%': { opacity: 1 },
+              '50%': { opacity: 0.4 },
             }
           }
         }
@@ -60,435 +78,694 @@
 
   <style>
     body {
-      background-color: #080b11;
-      color: #f1f5f9;
-      font-family: 'Inter', sans-serif;
+      background-color: #080410;
+      color: #f3e8ff;
+      font-family: 'Outfit', sans-serif;
       overflow-x: hidden;
     }
-    .glass {
-      background: rgba(17, 23, 38, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    
+    /* Magical Grid and Nebula */
+    .bg-space-grid {
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(157, 78, 221, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(157, 78, 221, 0.05) 1px, transparent 1px);
     }
-    .glass-hover:hover {
-      background: rgba(26, 35, 58, 0.85);
-      border-color: rgba(0, 240, 255, 0.3);
-      box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
+
+    .purple-glass {
+      background: rgba(18, 9, 36, 0.65);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(199, 125, 255, 0.12);
     }
-    .gradient-text {
-      background: linear-gradient(135deg, #00F0FF 0%, #00FF88 50%, #7928CA 100%);
+
+    .purple-glass-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .purple-glass-hover:hover {
+      background: rgba(30, 14, 58, 0.85);
+      border-color: rgba(199, 125, 255, 0.4);
+      box-shadow: 0 15px 35px -10px rgba(157, 78, 221, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .purple-gradient-text {
+      background: linear-gradient(135deg, #e0aaff 0%, #c77dff 40%, #9d4edd 70%, #00F0FF 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .gradient-border {
+
+    .aurex-gradient-text {
+      background: linear-gradient(135deg, #e0aaff 0%, #c77dff 50%, #7b2cbf 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .neon-border-box {
       position: relative;
-      border-radius: 1rem;
-      background: linear-gradient(135deg, rgba(0,240,255,0.4), rgba(121,40,202,0.4));
-      padding: 1px;
+      border-radius: 1.25rem;
+      background: linear-gradient(135deg, rgba(199, 125, 255, 0.5), rgba(123, 44, 191, 0.1), rgba(0, 240, 255, 0.3));
+      padding: 1.5px;
     }
-    .gradient-border-inner {
-      background: #0d121f;
-      border-radius: calc(1rem - 1px);
+
+    .neon-border-box-inner {
+      background: #0e061c;
+      border-radius: calc(1.25rem - 1.5px);
     }
-    /* Grid background */
-    .bg-grid {
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #080410;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b0764;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #7e22ce;
+    }
+
+    /* Toast Notification */
+    #copyToast {
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
   </style>
 </head>
-<body class="bg-grid antialiased selection:bg-cyan-500 selection:text-black min-h-screen">
+<body class="bg-space-grid antialiased selection:bg-purple-600 selection:text-white min-h-screen relative">
 
-  <!-- Ambient Glow Effects -->
-  <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -z-10 animate-glow-pulse"></div>
-  <div class="fixed bottom-10 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -z-10 animate-glow-pulse" style="animation-delay: 1.5s;"></div>
+  <!-- Interactive Canvas Background for floating runes & mana particles -->
+  <canvas id="manaCanvas" class="fixed inset-0 pointer-events-none -z-10"></canvas>
 
-  <!-- Header / Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center text-slate-950 font-mono font-black text-xl shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition">
-          D
+  <!-- Ambient Nebula Lighting Glows -->
+  <div class="fixed top-[-10%] left-[15%] w-[550px] h-[550px] bg-purple-600/15 rounded-full blur-[140px] pointer-events-none -z-10 animate-glow-pulse"></div>
+  <div class="fixed top-[40%] right-[10%] w-[500px] h-[500px] bg-fuchsia-600/12 rounded-full blur-[140px] pointer-events-none -z-10 animate-glow-pulse" style="animation-delay: 2s;"></div>
+  <div class="fixed bottom-[-5%] left-[30%] w-[600px] h-[600px] bg-indigo-600/15 rounded-full blur-[160px] pointer-events-none -z-10 animate-glow-pulse" style="animation-delay: 3s;"></div>
+
+  <!-- Top Toast Notification -->
+  <div id="copyToast" class="fixed top-24 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-[-15px] flex items-center gap-3 px-5 py-3 rounded-xl bg-purple-950/90 border border-purple-500/50 shadow-2xl shadow-purple-900/50 text-white font-medium text-sm backdrop-blur-md">
+    <i class="fas fa-check-circle text-purple-400 text-base"></i>
+    <span id="toastMsg">¡Texto copiado al portapapeles!</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="fixed top-0 left-0 right-0 z-40 purple-glass border-b border-purple-900/40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-cyan-400 p-[1.5px] shadow-lg shadow-purple-900/40 group-hover:scale-105 transition duration-300">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-mono font-black text-xl text-purple-300 group-hover:text-white">
+            D
+          </div>
         </div>
-        <span class="font-bold text-xl tracking-tight text-white group-hover:text-cyan-400 transition">
-          Dafealru<span class="text-cyan-400">.dev</span>
-        </span>
+        <div>
+          <div class="font-bold text-lg tracking-tight text-white group-hover:text-purple-300 transition flex items-center gap-1.5">
+            <span>Dafealru</span>
+            <span class="text-xs px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-mono font-semibold">DEV</span>
+          </div>
+          <div class="text-[11px] font-mono text-purple-400/80 -mt-0.5">AurexCraft Lead</div>
+        </div>
       </a>
 
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#sobre-mi" class="hover:text-cyan-400 transition">Sobre mí</a>
-        <a href="#proyectos" class="hover:text-cyan-400 transition">Proyectos</a>
-        <a href="#skills" class="hover:text-cyan-400 transition">Tecnologías</a>
-        <a href="#contacto" class="hover:text-cyan-400 transition">Contacto</a>
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-purple-200/80">
+        <a href="#aurexcraft" class="hover:text-purple-300 transition flex items-center gap-1.5">
+          <i class="fas fa-cube text-purple-400 text-xs"></i>
+          <span>AurexCraft</span>
+        </a>
+        <a href="#proyectos" class="hover:text-purple-300 transition flex items-center gap-1.5">
+          <i class="fas fa-shield-halved text-purple-400 text-xs"></i>
+          <span>StaffCore & Plugins</span>
+        </a>
+        <a href="#stack" class="hover:text-purple-300 transition flex items-center gap-1.5">
+          <i class="fas fa-layer-group text-purple-400 text-xs"></i>
+          <span>Stack</span>
+        </a>
+        <a href="#contacto" class="hover:text-purple-300 transition flex items-center gap-1.5">
+          <i class="fas fa-envelope text-purple-400 text-xs"></i>
+          <span>Contacto</span>
+        </a>
       </div>
 
+      <!-- Quick Socials & Action -->
       <div class="flex items-center gap-3">
-        <a href="https://github.com/dr8553097-sudo" target="_blank" class="w-10 h-10 rounded-lg glass flex items-center justify-center text-slate-300 hover:text-white hover:border-cyan-500/50 transition">
-          <i class="fab fa-github text-lg"></i>
+        <a href="https://github.com/dr8553097-sudo" target="_blank" title="GitHub" class="w-10 h-10 rounded-xl purple-glass flex items-center justify-center text-purple-300 hover:text-white hover:border-purple-400/50 hover:bg-purple-900/30 transition">
+          <i class="fab fa-github text-base"></i>
         </a>
-        <a href="https://modrinth.com/user/Dafealru" target="_blank" class="w-10 h-10 rounded-lg glass flex items-center justify-center text-emerald-400 hover:text-emerald-300 hover:border-emerald-500/50 transition">
-          <i class="fas fa-cube text-lg"></i>
+        <a href="https://modrinth.com/user/Dafealru" target="_blank" title="Modrinth" class="w-10 h-10 rounded-xl purple-glass flex items-center justify-center text-emerald-400 hover:text-emerald-300 hover:border-emerald-500/50 hover:bg-emerald-950/30 transition">
+          <i class="fas fa-cube text-base"></i>
         </a>
-        <a href="#proyectos" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-bold text-sm hover:opacity-90 transition shadow-lg shadow-cyan-500/20">
-          <span>Ver Plugins</span>
-          <i class="fas fa-arrow-right text-xs"></i>
+        <a href="#aurexcraft" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-purple-900/30 hover:shadow-purple-700/50">
+          <i class="fas fa-gamepad"></i>
+          <span>Jugar en Servidor</span>
         </a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="pt-40 pb-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-8 animate-float">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span>Disponible para desarrollo & comisiones</span>
+  <section class="pt-36 sm:pt-44 pb-20 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      
+      <!-- Top Live Status Pill -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full purple-glass border border-purple-500/40 text-purple-200 text-xs font-mono mb-8 animate-float shadow-lg shadow-purple-950/60">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="font-medium">Lead Developer @ <strong>AurexCraft Network</strong></span>
+        <span class="text-purple-400">•</span>
+        <span class="text-purple-300">Minecraft 1.21.x</span>
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
-        Creando plugins de <br>
-        <span class="gradient-text">Minecraft de Nueva Generación</span>
+      <!-- Main Heading -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white mb-6 leading-[1.08]">
+        Arquitectura & Plugins <br>
+        <span class="purple-gradient-text">de Alto Rendimiento</span>
       </h1>
 
-      <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-        Especializado en <strong class="text-white">Paper / Spigot 1.21+</strong>, arquitectura Java de alto rendimiento, 
-        interfaces interactivas, sistemas visuales de partículas y herramientas de moderación profesional.
+      <p class="text-purple-200/70 text-lg sm:text-xl max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+        Especializado en <strong class="text-white">Paper / Spigot 1.21+</strong>, sistemas visuales de partículas, optimización de servidores masivos, y creador de la suite de moderación <strong class="text-purple-300">StaffCore</strong>.
       </p>
 
       <!-- Action Buttons -->
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="#proyectos" class="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-emerald-400 to-emerald-500 text-slate-950 font-bold text-base hover:shadow-xl hover:shadow-cyan-500/25 transition transform hover:-translate-y-0.5 flex items-center gap-3">
-          <i class="fas fa-shield-halved"></i>
-          <span>Explorar StaffCore</span>
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+        <a href="#proyectos" class="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-600 to-indigo-600 text-white font-bold text-base hover:shadow-2xl hover:shadow-purple-600/40 transition transform hover:-translate-y-0.5 flex items-center gap-3">
+          <i class="fas fa-shield-halved text-purple-200"></i>
+          <span>Ver StaffCore 1.3.0</span>
         </a>
-        <a href="https://github.com/dr8553097-sudo/StaffCore" target="_blank" class="px-8 py-4 rounded-xl glass text-white font-semibold text-base hover:border-slate-600 transition flex items-center gap-3">
+        <a href="#aurexcraft" class="px-8 py-4 rounded-xl purple-glass text-purple-200 hover:text-white hover:border-purple-400/50 font-semibold text-base transition flex items-center gap-3">
+          <i class="fas fa-dragon text-fuchsia-400"></i>
+          <span>AurexCraft Survival</span>
+        </a>
+        <a href="https://github.com/dr8553097-sudo/StaffCore" target="_blank" class="px-6 py-4 rounded-xl purple-glass text-purple-300 hover:text-white font-mono text-sm transition flex items-center gap-2">
           <i class="fab fa-github"></i>
           <span>GitHub</span>
         </a>
-        <a href="https://modrinth.com/plugin/staffcore-dafealru" target="_blank" class="px-8 py-4 rounded-xl glass text-emerald-400 font-semibold text-base hover:border-emerald-500/40 transition flex items-center gap-3">
-          <i class="fas fa-cube"></i>
-          <span>Modrinth</span>
-        </a>
       </div>
 
-      <!-- Quick Highlights Bar -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-20 max-w-3xl mx-auto">
-        <div class="glass p-5 rounded-2xl text-center">
-          <div class="text-2xl sm:text-3xl font-black text-cyan-400 font-mono">1.21+</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Soporte Nativo</div>
+      <!-- Feature Metrics Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div class="purple-glass purple-glass-hover p-5 rounded-2xl text-center border-purple-800/40">
+          <div class="text-3xl font-black purple-gradient-text font-mono">4+ Años</div>
+          <div class="text-xs text-purple-300/80 mt-1 uppercase tracking-wider font-semibold">Experiencia Servidores</div>
         </div>
-        <div class="glass p-5 rounded-2xl text-center">
-          <div class="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">Java 21</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Tecnología Base</div>
+        <div class="purple-glass purple-glass-hover p-5 rounded-2xl text-center border-purple-800/40">
+          <div class="text-3xl font-black text-purple-300 font-mono">Java 21</div>
+          <div class="text-xs text-purple-300/80 mt-1 uppercase tracking-wider font-semibold">Tecnología Nativa</div>
         </div>
-        <div class="glass p-5 rounded-2xl text-center">
-          <div class="text-2xl sm:text-3xl font-black text-purple-400 font-mono">20 TPS</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Zero-Lag Design</div>
+        <div class="purple-glass purple-glass-hover p-5 rounded-2xl text-center border-purple-800/40">
+          <div class="text-3xl font-black text-emerald-400 font-mono">20.0 TPS</div>
+          <div class="text-xs text-purple-300/80 mt-1 uppercase tracking-wider font-semibold">Zero-Lag Promise</div>
         </div>
-        <div class="glass p-5 rounded-2xl text-center">
-          <div class="text-2xl sm:text-3xl font-black text-amber-400 font-mono">100%</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Código Abierto</div>
+        <div class="purple-glass purple-glass-hover p-5 rounded-2xl text-center border-purple-800/40">
+          <div class="text-3xl font-black text-cyan-400 font-mono">Crossplay</div>
+          <div class="text-xs text-purple-300/80 mt-1 uppercase tracking-wider font-semibold">Java & Bedrock</div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- About Me Section -->
-  <section id="sobre-mi" class="py-20 px-6 border-t border-slate-800/60">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+  <!-- AurexCraft Server Section (DIRECT REAL DATA FROM MCP) -->
+  <section id="aurexcraft" class="py-20 px-6 border-t border-purple-900/40 relative">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
-          <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm font-semibold mb-3">
-            <i class="fas fa-terminal"></i>
-            <span>SOBRE MÍ</span>
+          <div class="inline-flex items-center gap-2 text-fuchsia-400 font-mono text-xs uppercase tracking-widest font-bold mb-2">
+            <i class="fas fa-crown"></i>
+            <span>SERVIDOR OFICIAL & PROYECTO PRINCIPAL</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl font-black text-white mb-6">
-            Desarrollador enfocado en rendimiento y experiencia de usuario
+          <h2 class="text-3xl sm:text-5xl font-black text-white">
+            AurexCraft <span class="aurex-gradient-text">— Survival Custom</span>
           </h2>
-          <p class="text-slate-400 mb-4 leading-relaxed">
-            ¡Hola! Soy <strong class="text-white">Dafealru</strong>, desarrollador de software de Colombia 🇨🇴 enfocado en el ecosistema de servidores de Minecraft y backend en Java.
-          </p>
-          <p class="text-slate-400 mb-6 leading-relaxed">
-            Me apasiona construir plugins que no solo sean visualmente atractivos con efectos modernos de partículas y colores HEX, sino que estén optimizados a nivel de milisegundos para garantizar la estabilidad de redes con cientos de jugadores simultáneos.
-          </p>
-
-          <div class="flex flex-wrap gap-3">
-            <span class="px-3.5 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono">
-              <i class="fas fa-gamepad mr-1.5"></i> Aurexcraft Lead Dev
-            </span>
-            <span class="px-3.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
-              <i class="fas fa-shield-alt mr-1.5"></i> Moderation Systems
-            </span>
-            <span class="px-3.5 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-mono">
-              <i class="fas fa-code mr-1.5"></i> Clean Architecture
-            </span>
-          </div>
         </div>
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1.5 rounded-lg purple-glass text-purple-300 text-xs font-mono">
+            <i class="fas fa-shield-alt text-purple-400 mr-1.5"></i> Paper 1.21.x
+          </span>
+          <span class="px-3 py-1.5 rounded-lg bg-fuchsia-950/50 border border-fuchsia-500/30 text-fuchsia-300 text-xs font-mono font-bold">
+            ⚡ PRÓXIMAMENTE NETWORK
+          </span>
+        </div>
+      </div>
 
-        <!-- Code Card Preview -->
-        <div class="glass p-6 rounded-2xl font-mono text-sm border border-slate-700/60 shadow-2xl relative">
-          <div class="flex items-center gap-2 pb-4 border-b border-slate-800 mb-4">
-            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
-            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
-            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-            <span class="text-xs text-slate-500 ml-2">DeveloperProfile.java</span>
-          </div>
-          <div class="space-y-1.5 text-slate-300 text-xs sm:text-sm">
-            <div><span class="text-purple-400">public class</span> <span class="text-cyan-400 font-bold">Dafealru</span> {</div>
-            <div class="pl-4"><span class="text-slate-500">// Propiedades principales</span></div>
-            <div class="pl-4"><span class="text-purple-400">String</span> role = <span class="text-emerald-300">"Minecraft Plugin Architect"</span>;</div>
-            <div class="pl-4"><span class="text-purple-400">String</span> server = <span class="text-emerald-300">"Aurexcraft Network"</span>;</div>
-            <div class="pl-4"><span class="text-purple-400">String[]</span> stack = {<span class="text-emerald-300">"Java 21"</span>, <span class="text-emerald-300">"Paper API"</span>, <span class="text-emerald-300">"Maven"</span>};</div>
-            <div class="pl-4"><span class="text-purple-400">boolean</span> zeroLagGuaranteed = <span class="text-cyan-400">true</span>;</div>
-            <div class="pl-4"><span class="text-purple-400">boolean</span> openSourceEnthusiast = <span class="text-cyan-400">true</span>;</div>
-            <div>}</div>
+      <!-- AurexCraft Main Showcase Card -->
+      <div class="neon-border-box mb-8">
+        <div class="neon-border-box-inner p-8 sm:p-12">
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left Info -->
+            <div class="lg:col-span-7 space-y-6">
+              
+              <!-- MOTD Banner Box -->
+              <div class="p-4 rounded-xl bg-purple-950/60 border border-purple-800/50 font-mono text-sm leading-relaxed text-purple-100 shadow-inner">
+                <div class="text-xs text-purple-400 font-bold mb-1 flex items-center justify-between">
+                  <span>✦ MOTD DEL SERVIDOR</span>
+                  <span class="text-[11px] text-emerald-400 font-normal">● EN LÍNEA</span>
+                </div>
+                <div class="text-purple-300 font-bold">✦ A U R E X C R A F T ✦ <span class="text-white text-xs font-normal">» [1.21.x]</span></div>
+                <div class="text-fuchsia-300 font-semibold text-xs mt-0.5">⚡ SURVIVAL CUSTOM » ¡NUEVA TEMPORADA! ⚡</div>
+              </div>
+
+              <p class="text-purple-200/80 leading-relaxed text-base">
+                <strong>AurexCraft</strong> es una experiencia Survival completamente personalizada y redefinida desde cero con mecánicas exclusivas, generación de terreno épica, chat de voz integrado y compatibilidad para jugadores de PC y Móvil.
+              </p>
+
+              <!-- Server Highlights -->
+              <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                <div class="flex items-center gap-3 p-3 rounded-xl purple-glass border-purple-800/30">
+                  <div class="w-8 h-8 rounded-lg bg-purple-600/20 flex items-center justify-center text-purple-400">
+                    <i class="fas fa-microphone"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold text-white text-xs">Simple Voice Chat</div>
+                    <div class="text-[11px] text-purple-300/70">Chat de voz 3D por proximidad</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl purple-glass border-purple-800/30">
+                  <div class="w-8 h-8 rounded-lg bg-cyan-600/20 flex items-center justify-center text-cyan-400">
+                    <i class="fas fa-mobile-screen"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold text-white text-xs">Geyser & Floodgate</div>
+                    <div class="text-[11px] text-purple-300/70">Multiplataforma Java & Bedrock</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl purple-glass border-purple-800/30">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-600/20 flex items-center justify-center text-emerald-400">
+                    <i class="fas fa-tree"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold text-white text-xs">Terraform & Seasons</div>
+                    <div class="text-[11px] text-purple-300/70">Estaciones climáticas y biomas</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl purple-glass border-purple-800/30">
+                  <div class="w-8 h-8 rounded-lg bg-fuchsia-600/20 flex items-center justify-center text-fuchsia-400">
+                    <i class="fas fa-dragon"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold text-white text-xs">MythicMobs & Dungeons</div>
+                    <div class="text-[11px] text-purple-300/70">Jefes y eventos PVE custom</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Connection Box -->
+            <div class="lg:col-span-5 flex flex-col gap-4">
+              <div class="p-6 rounded-2xl bg-purple-950/80 border border-purple-500/30 space-y-4 text-center shadow-xl">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-purple-600 to-fuchsia-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-purple-900/50 animate-float">
+                  <i class="fas fa-server"></i>
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-black text-white">¡Únete a AurexCraft!</h3>
+                  <p class="text-xs text-purple-300/70 mt-1">Conéctate directamente desde cualquier versión de Minecraft 1.21.x</p>
+                </div>
+
+                <!-- Live Server IP Display Box -->
+                <div class="space-y-2">
+                  <div class="p-3.5 rounded-xl bg-slate-950/80 border border-purple-700/50 flex items-center justify-between font-mono text-xs">
+                    <div class="text-left">
+                      <div class="text-[10px] text-purple-400 font-bold uppercase tracking-wider">IP Java / Bedrock</div>
+                      <div class="text-purple-200 font-bold text-sm select-all">play.aurexcraft.net</div>
+                    </div>
+                    <button onclick="copyToClipboard('play.aurexcraft.net', '¡IP de Java copiada!')" class="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-sans text-xs font-bold transition flex items-center gap-1.5 shadow-md">
+                      <i class="fas fa-copy"></i>
+                      <span>Copiar</span>
+                    </button>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-slate-950/60 border border-purple-800/30 flex items-center justify-between font-mono text-xs">
+                    <span class="text-purple-400 font-semibold">Puerto Bedrock:</span>
+                    <span class="text-white font-bold">25629</span>
+                  </div>
+                </div>
+
+                <div class="text-[11px] font-mono text-emerald-400 flex items-center justify-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>Servidor Activo • Modo Survival Hardcore</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- Featured Projects -->
+  <!-- Featured Plugin Projects Section -->
   <section id="proyectos" class="py-20 px-6">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm font-semibold mb-3">
-          <i class="fas fa-cubes"></i>
-          <span>PROYECTOS DESTACADOS</span>
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 text-purple-400 font-mono text-xs uppercase tracking-widest font-bold mb-2">
+          <i class="fas fa-code-branch"></i>
+          <span>PLUGINS DE CÓDIGO ABIERTO & RECURSOS</span>
         </div>
         <h2 class="text-3xl sm:text-5xl font-black text-white mb-4">
-          Plugins y Software
+          Mis Creaciones & Software
         </h2>
-        <p class="text-slate-400">
-          Proyectos construidos con los estándares más exigentes de la comunidad de Minecraft.
+        <p class="text-purple-200/70 text-base">
+          Desarrollados con arquitectura limpia, sin dependencias innecesarias y optimizados para la API nativa de Paper.
         </p>
       </div>
 
-      <!-- Main Project: StaffCore -->
-      <div class="gradient-border mb-12 transform hover:scale-[1.01] transition duration-300">
-        <div class="gradient-border-inner p-8 sm:p-10">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-            <div class="space-y-4 max-w-2xl">
-              <div class="flex flex-wrap items-center gap-3">
-                <span class="px-3 py-1 rounded-md bg-cyan-500/20 text-cyan-300 text-xs font-mono font-bold">
-                  FLAGSHIP PLUGIN
+      <!-- Flagship: StaffCore v1.3.0 -->
+      <div class="neon-border-box mb-12">
+        <div class="neon-border-box-inner p-8 sm:p-12">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-10">
+            
+            <div class="space-y-5 max-w-2xl">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span class="px-3 py-1 rounded-md bg-purple-600/30 border border-purple-500/40 text-purple-200 text-xs font-mono font-bold">
+                  🛡️ FLAGSHIP PLUGIN
                 </span>
-                <span class="px-3 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-xs font-mono font-bold">
-                  v1.3.0
+                <span class="px-3 py-1 rounded-md bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold">
+                  v1.3.0 RELEASE
                 </span>
-                <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-mono font-bold">
-                  GPL-3.0
+                <span class="px-3 py-1 rounded-md bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-mono font-bold">
+                  GPL-3.0 OPEN SOURCE
                 </span>
               </div>
 
-              <h3 class="text-3xl sm:text-4xl font-black text-white flex items-center gap-3">
-                <span>StaffCore</span>
-                <span class="text-slate-500 text-xl font-normal">— Moderation Suite</span>
-              </h3>
+              <div>
+                <h3 class="text-3xl sm:text-4xl font-black text-white flex items-center gap-3">
+                  <span>StaffCore</span>
+                  <span class="text-purple-400 text-xl font-normal font-mono">— Advanced Suite</span>
+                </h3>
+                <p class="text-purple-300/80 font-mono text-xs mt-1">Paper / Spigot 1.21.x Native • Java 21</p>
+              </div>
 
-              <p class="text-slate-300 leading-relaxed">
-                Suite integral de moderación para redes de Minecraft Paper/Spigot 1.21+. Cuenta con modo staff completo con restauración de inventario, <strong>Aura de contorno brillante (Glowing)</strong> con partículas espirales orbitales, modo espectador, visión nocturna, baneos de IP (<code class="text-cyan-400 font-mono">/scbanip</code>), sistema anti-bypass de Freeze y detección heurística de X-Ray.
+              <p class="text-purple-100/80 leading-relaxed text-base">
+                Suite integral de moderación diseñada para redes de Minecraft que exigen control absoluto y cero caídas de rendimiento. Cuenta con <strong>Aura de contorno brillante (Glowing)</strong> con espiral de partículas orbitales, 8 herramientas de hotbar con guardado de inventario, sistema completo de baneos de IP (<code class="text-purple-300 font-mono">/scbanip</code>), inspección en tiempo real, detección heurística de X-Ray y soporte multi-idioma nativo.
               </p>
 
-              <!-- Feature Bullets -->
-              <div class="grid sm:grid-cols-2 gap-2 text-sm text-slate-400 pt-2">
+              <!-- Feature Grid -->
+              <div class="grid sm:grid-cols-2 gap-2.5 text-xs text-purple-200/90 pt-2 font-mono">
                 <div class="flex items-center gap-2">
-                  <i class="fas fa-check text-emerald-400 text-xs"></i>
-                  <span>8 Herramientas de Hotbar</span>
+                  <i class="fas fa-sparkles text-purple-400"></i>
+                  <span>Aura Glowing & Partículas en Espiral</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <i class="fas fa-check text-emerald-400 text-xs"></i>
-                  <span>Aura Glowing & Partículas</span>
+                  <i class="fas fa-hammer text-fuchsia-400"></i>
+                  <span>Baneos por IP (/scbanip & /sctempbanip)</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <i class="fas fa-check text-emerald-400 text-xs"></i>
-                  <span>Baneos por IP Temporales & Perma</span>
+                  <i class="fas fa-snowflake text-cyan-400"></i>
+                  <span>Freeze Anti-Bypass & Persistence</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <i class="fas fa-check text-emerald-400 text-xs"></i>
+                  <i class="fas fa-language text-emerald-400"></i>
                   <span>Multi-idioma (ES, EN, FR, PT)</span>
                 </div>
               </div>
             </div>
 
-            <!-- Download Links Box -->
-            <div class="flex flex-col gap-3 min-w-[220px]">
-              <a href="https://modrinth.com/plugin/staffcore-dafealru" target="_blank" class="px-6 py-3.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-center hover:bg-emerald-400 transition flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-500/20">
-                <i class="fas fa-download"></i>
+            <!-- Links & Action Column -->
+            <div class="flex flex-col gap-3 min-w-[240px]">
+              <a href="https://modrinth.com/plugin/staffcore-dafealru" target="_blank" class="px-6 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-center transition flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20">
+                <i class="fas fa-cube text-lg"></i>
                 <span>Descargar en Modrinth</span>
               </a>
-              <a href="https://www.spigotmc.org/resources/staffcore-advanced-staff-moderation-suite.134819/" target="_blank" class="px-6 py-3 rounded-xl glass text-orange-400 hover:text-orange-300 font-semibold text-center hover:border-orange-500/40 transition flex items-center justify-center gap-2.5">
+              <a href="https://www.spigotmc.org/resources/staffcore-advanced-staff-moderation-suite.134819/" target="_blank" class="px-6 py-3 rounded-xl purple-glass text-orange-400 hover:text-orange-300 hover:border-orange-500/40 font-semibold text-center transition flex items-center justify-center gap-2.5 text-sm">
                 <i class="fas fa-cubes"></i>
                 <span>Ver en SpigotMC</span>
               </a>
-              <a href="https://github.com/dr8553097-sudo/StaffCore/blob/main/docs/index.md" target="_blank" class="px-6 py-3 rounded-xl glass text-cyan-400 hover:text-cyan-300 font-semibold text-center hover:border-cyan-500/40 transition flex items-center justify-center gap-2.5">
-                <i class="fas fa-book"></i>
-                <span>Wiki Oficial</span>
+              <a href="https://github.com/dr8553097-sudo/StaffCore/blob/main/docs/index.md" target="_blank" class="px-6 py-3 rounded-xl purple-glass text-purple-300 hover:text-white hover:border-purple-400/50 font-semibold text-center transition flex items-center justify-center gap-2.5 text-sm">
+                <i class="fas fa-book-open"></i>
+                <span>Wiki Oficial Completa</span>
               </a>
-              <a href="https://github.com/dr8553097-sudo/StaffCore" target="_blank" class="px-6 py-2.5 rounded-xl text-slate-400 hover:text-white font-medium text-xs text-center transition flex items-center justify-center gap-2">
+              <a href="https://github.com/dr8553097-sudo/StaffCore" target="_blank" class="px-6 py-2.5 rounded-xl text-purple-400 hover:text-purple-200 font-mono text-xs text-center transition flex items-center justify-center gap-2">
                 <i class="fab fa-github"></i>
-                <span>Código en GitHub</span>
+                <span>Ver Código en GitHub</span>
               </a>
             </div>
+
           </div>
         </div>
       </div>
 
       <!-- Upcoming Projects Grid -->
       <div class="grid md:grid-cols-2 gap-6">
-        <!-- Project 2: CleanPulse -->
-        <div class="glass glass-hover p-8 rounded-2xl transition duration-300">
+        
+        <!-- CleanPulse Project Card -->
+        <div class="purple-glass purple-glass-hover p-8 rounded-3xl border-purple-800/40 relative overflow-hidden">
           <div class="flex items-center justify-between mb-4">
-            <span class="px-3 py-1 rounded-md bg-amber-500/20 text-amber-300 text-xs font-mono font-bold">
-              EN DESARROLLO
+            <span class="px-3 py-1 rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold">
+              ⚡ PRÓXIMO LANZAMIENTO
             </span>
             <i class="fas fa-bolt text-amber-400 text-xl"></i>
           </div>
-          <h4 class="text-2xl font-bold text-white mb-2">CleanPulse</h4>
-          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-            Limpiador inteligente y optimizador de entidades para Paper 1.21+. Protección contra borrado accidental de ítems valiosos o nombrados, temporizadores con avisos relajantes y comando <code class="text-cyan-400 font-mono">/trash</code>.
+          <h4 class="text-2xl font-black text-white mb-2 flex items-center gap-2">
+            <span>CleanPulse</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-purple-900/60 text-purple-300 font-mono">1.21+</span>
+          </h4>
+          <p class="text-purple-200/70 text-sm mb-6 leading-relaxed">
+            Optimizador inteligente y limpiador de entidades de nueva generación. Incluye <strong>filtro de protección</strong> (nunca borra ítems con NBT valiosos ni mascotas), pulsos asíncronos sin congelar TPS, limitador de entidades por chunk y comando <code class="text-purple-300 font-mono">/trash</code>.
           </p>
-          <div class="text-xs font-mono text-slate-500">Próximamente en Modrinth & SpigotMC</div>
+          <div class="flex items-center justify-between text-xs font-mono text-purple-400/80 pt-4 border-t border-purple-900/40">
+            <span>Estado: En Desarrollo Activo</span>
+            <span class="text-amber-400">Modrinth Ready</span>
+          </div>
         </div>
 
-        <!-- Project 3: Aurexcraft Network Infrastructure -->
-        <div class="glass glass-hover p-8 rounded-2xl transition duration-300">
+        <!-- Custom Client & Server Utilities -->
+        <div class="purple-glass purple-glass-hover p-8 rounded-3xl border-purple-800/40 relative overflow-hidden">
           <div class="flex items-center justify-between mb-4">
-            <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-mono font-bold">
-              NETWORK CORE
+            <span class="px-3 py-1 rounded-md bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-mono font-bold">
+              🛠️ UTILIDADES & NETWORK
             </span>
-            <i class="fas fa-server text-purple-400 text-xl"></i>
+            <i class="fas fa-network-wired text-purple-400 text-xl"></i>
           </div>
-          <h4 class="text-2xl font-bold text-white mb-2">Aurexcraft Network Core</h4>
-          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-            Ecosistema de plugins internos y configuraciones personalizadas para el servidor Aurexcraft, integrando economía, recompensas, eventos PVE y sincronización con Discord.
+          <h4 class="text-2xl font-black text-white mb-2">Aurex Network Ecosystem</h4>
+          <p class="text-purple-200/70 text-sm mb-6 leading-relaxed">
+            Colección de integraciones custom para redes Paper y Velocity: bots de Discord interactivos con control de consola en tiempo real, menús interactivos zMenu con compatibilidad multiplataforma y sistemas de auditoría.
           </p>
-          <div class="text-xs font-mono text-slate-500">Servidor en Producción</div>
+          <div class="flex items-center justify-between text-xs font-mono text-purple-400/80 pt-4 border-t border-purple-900/40">
+            <span>Producción Continua</span>
+            <span class="text-emerald-400">Online</span>
+          </div>
         </div>
+
       </div>
+
     </div>
   </section>
 
-  <!-- Tech Stack Section -->
-  <section id="skills" class="py-20 px-6 border-t border-slate-800/60 bg-slate-950/40">
+  <!-- Tech Stack & Skills -->
+  <section id="stack" class="py-20 px-6 border-t border-purple-900/40 bg-purple-950/20">
     <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm font-semibold mb-3">
+      
+      <div class="inline-flex items-center gap-2 text-purple-400 font-mono text-xs uppercase tracking-widest font-bold mb-2">
         <i class="fas fa-layer-group"></i>
-        <span>TECNOLOGÍAS & STACK</span>
+        <span>STACK TECNOLÓGICO</span>
       </div>
       <h2 class="text-3xl sm:text-4xl font-black text-white mb-12">
-        Herramientas y Entornos de Trabajo
+        Herramientas y Entornos de Desarrollo
       </h2>
 
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div class="glass p-6 rounded-2xl text-center hover:border-orange-500/50 transition">
-          <i class="fab fa-java text-4xl text-orange-400 mb-3"></i>
-          <div class="font-bold text-white">Java 21</div>
-          <div class="text-xs text-slate-400 mt-1">Lenguaje Principal</div>
+        
+        <div class="purple-glass purple-glass-hover p-6 rounded-2xl text-center">
+          <i class="fab fa-java text-4xl text-amber-400 mb-3"></i>
+          <div class="font-bold text-white text-sm">Java 21</div>
+          <div class="text-[11px] text-purple-300/70 font-mono mt-1">Backend & Plugins</div>
         </div>
 
-        <div class="glass p-6 rounded-2xl text-center hover:border-cyan-500/50 transition">
+        <div class="purple-glass purple-glass-hover p-6 rounded-2xl text-center">
           <i class="fas fa-scroll text-4xl text-cyan-400 mb-3"></i>
-          <div class="font-bold text-white">Paper API</div>
-          <div class="text-xs text-slate-400 mt-1">1.21.x / 26.x</div>
+          <div class="font-bold text-white text-sm">Paper & Spigot API</div>
+          <div class="text-[11px] text-purple-300/70 font-mono mt-1">1.21.x / 26.x</div>
         </div>
 
-        <div class="glass p-6 rounded-2xl text-center hover:border-red-500/50 transition">
-          <i class="fas fa-cube text-4xl text-red-400 mb-3"></i>
-          <div class="font-bold text-white">Maven</div>
-          <div class="text-xs text-slate-400 mt-1">Build & Dependencies</div>
+        <div class="purple-glass purple-glass-hover p-6 rounded-2xl text-center">
+          <i class="fas fa-cube text-4xl text-rose-400 mb-3"></i>
+          <div class="font-bold text-white text-sm">Maven</div>
+          <div class="text-[11px] text-purple-300/70 font-mono mt-1">Build & Packaging</div>
         </div>
 
-        <div class="glass p-6 rounded-2xl text-center hover:border-emerald-500/50 transition">
+        <div class="purple-glass purple-glass-hover p-6 rounded-2xl text-center">
           <i class="fas fa-key text-4xl text-emerald-400 mb-3"></i>
-          <div class="font-bold text-white">LuckPerms API</div>
-          <div class="text-xs text-slate-400 mt-1">Sistemas de Permisos</div>
+          <div class="font-bold text-white text-sm">LuckPerms API</div>
+          <div class="text-[11px] text-purple-300/70 font-mono mt-1">Sistemas de Permisos</div>
         </div>
 
-        <div class="glass p-6 rounded-2xl text-center hover:border-blue-500/50 transition">
-          <i class="fab fa-git-alt text-4xl text-orange-500 mb-3"></i>
-          <div class="font-bold text-white">Git & GitHub</div>
-          <div class="text-xs text-slate-400 mt-1">Control de Versiones</div>
+        <div class="purple-glass purple-glass-hover p-6 rounded-2xl text-center">
+          <i class="fab fa-git-alt text-4xl text-orange-400 mb-3"></i>
+          <div class="font-bold text-white text-sm">Git & GitHub</div>
+          <div class="text-[11px] text-purple-300/70 font-mono mt-1">Control de Versiones</div>
         </div>
 
-        <div class="glass p-6 rounded-2xl text-center hover:border-yellow-500/50 transition">
-          <i class="fas fa-file-code text-4xl text-yellow-400 mb-3"></i>
-          <div class="font-bold text-white">YAML & NBT</div>
-          <div class="text-xs text-slate-400 mt-1">Config & Data Persistence</div>
-        </div>
-
-        <div class="glass p-6 rounded-2xl text-center hover:border-purple-500/50 transition">
+        <div class="purple-glass purple-glass-hover p-6 rounded-2xl text-center">
           <i class="fas fa-feather text-4xl text-purple-400 mb-3"></i>
-          <div class="font-bold text-white">Adventure Text</div>
-          <div class="text-xs text-slate-400 mt-1">Componentes & HEX Colors</div>
+          <div class="font-bold text-white text-sm">Adventure API</div>
+          <div class="text-[11px] text-purple-300/70 font-mono mt-1">HEX RGB & Components</div>
         </div>
 
-        <div class="glass p-6 rounded-2xl text-center hover:border-sky-500/50 transition">
-          <i class="fas fa-server text-4xl text-sky-400 mb-3"></i>
-          <div class="font-bold text-white">Pterodactyl</div>
-          <div class="text-xs text-slate-400 mt-1">Server Management</div>
+        <div class="purple-glass purple-glass-hover p-6 rounded-2xl text-center">
+          <i class="fas fa-database text-4xl text-sky-400 mb-3"></i>
+          <div class="font-bold text-white text-sm">YAML & SQL</div>
+          <div class="text-[11px] text-purple-300/70 font-mono mt-1">Async Data Storage</div>
         </div>
+
+        <div class="purple-glass purple-glass-hover p-6 rounded-2xl text-center">
+          <i class="fas fa-server text-4xl text-fuchsia-400 mb-3"></i>
+          <div class="font-bold text-white text-sm">Pterodactyl Panel</div>
+          <div class="text-[11px] text-purple-300/70 font-mono mt-1">Server Orchestration</div>
+        </div>
+
       </div>
+
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contacto" class="py-20 px-6 border-t border-slate-800/60">
+  <section id="contacto" class="py-20 px-6 border-t border-purple-900/40">
     <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-sm font-semibold mb-3">
+      
+      <div class="inline-flex items-center gap-2 text-purple-400 font-mono text-xs uppercase tracking-widest font-bold mb-2">
         <i class="fas fa-paper-plane"></i>
-        <span>CONTACTO & REDES</span>
+        <span>CONTACTO DIRECTO</span>
       </div>
       <h2 class="text-3xl sm:text-5xl font-black text-white mb-6">
-        ¿Tienes una idea o proyecto en mente?
+        ¿Hablamos de tu Proyecto?
       </h2>
-      <p class="text-slate-400 text-lg max-w-xl mx-auto mb-10">
-        Ponte en contacto para comisiones de plugins, colaboraciones o soporte sobre mis proyectos.
+      <p class="text-purple-200/70 text-lg max-w-xl mx-auto mb-10">
+        Disponible para comisiones de plugins personalizados, consultoría de rendimiento y optimización de servidores.
       </p>
 
-      <div class="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
-        <a href="https://github.com/dr8553097-sudo" target="_blank" class="glass p-6 rounded-2xl hover:border-cyan-500/50 transition flex flex-col items-center gap-2">
+      <!-- Social Cards Grid -->
+      <div class="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-10">
+        <a href="https://github.com/dr8553097-sudo" target="_blank" class="purple-glass purple-glass-hover p-6 rounded-2xl flex flex-col items-center gap-2">
           <i class="fab fa-github text-3xl text-white"></i>
           <span class="font-bold text-white text-sm">GitHub</span>
-          <span class="text-xs text-slate-400">@dr8553097-sudo</span>
+          <span class="text-xs text-purple-300/70 font-mono">@dr8553097-sudo</span>
         </a>
 
-        <a href="https://modrinth.com/user/Dafealru" target="_blank" class="glass p-6 rounded-2xl hover:border-emerald-500/50 transition flex flex-col items-center gap-2">
+        <a href="https://modrinth.com/user/Dafealru" target="_blank" class="purple-glass purple-glass-hover p-6 rounded-2xl flex flex-col items-center gap-2">
           <i class="fas fa-cube text-3xl text-emerald-400"></i>
           <span class="font-bold text-white text-sm">Modrinth</span>
-          <span class="text-xs text-slate-400">@Dafealru</span>
+          <span class="text-xs text-purple-300/70 font-mono">@Dafealru</span>
         </a>
 
-        <a href="https://www.spigotmc.org/resources/staffcore-advanced-staff-moderation-suite.134819/" target="_blank" class="glass p-6 rounded-2xl hover:border-orange-500/50 transition flex flex-col items-center gap-2">
+        <a href="https://www.spigotmc.org/resources/staffcore-advanced-staff-moderation-suite.134819/" target="_blank" class="purple-glass purple-glass-hover p-6 rounded-2xl flex flex-col items-center gap-2">
           <i class="fas fa-cubes text-3xl text-orange-400"></i>
           <span class="font-bold text-white text-sm">SpigotMC</span>
-          <span class="text-xs text-slate-400">StaffCore Suite</span>
+          <span class="text-xs text-purple-300/70 font-mono">StaffCore Suite</span>
         </a>
       </div>
 
-      <div class="inline-flex items-center gap-3 px-6 py-3 rounded-xl glass text-slate-300 font-mono text-sm">
-        <i class="fas fa-envelope text-cyan-400"></i>
+      <!-- Copy Email Button -->
+      <div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl purple-glass border-purple-500/30 text-purple-200 font-mono text-sm cursor-pointer hover:border-purple-400 transition" onclick="copyToClipboard('dr8553097@gmail.com', '¡Email copiado al portapapeles!')">
+        <i class="fas fa-envelope text-fuchsia-400"></i>
         <span>dr8553097@gmail.com</span>
+        <i class="fas fa-copy text-xs text-purple-400 ml-2"></i>
       </div>
+
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 px-6 border-t border-slate-900 text-center text-xs text-slate-500 font-mono">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+  <footer class="py-8 px-6 border-t border-purple-950/80 text-center text-xs text-purple-400/60 font-mono">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        © 2026 <strong class="text-slate-300">Dafealru</strong>. Todos los derechos reservados.
+        © 2026 <strong class="text-purple-200">Dafealru</strong> • Lead Dev @ <strong>AurexCraft Network</strong>
       </div>
-      <div class="flex items-center gap-2">
-        <span>Desarrollado con ❤️ desde Colombia 🇨🇴</span>
+      <div class="flex items-center gap-2 text-purple-300">
+        <span>Creado con ❤️ y magia morada desde Colombia 🇨🇴</span>
       </div>
     </div>
   </footer>
+
+  <!-- Script for Canvas Particle Runes & Clipboard Toast -->
+  <script>
+    // Copy to clipboard with Toast Notification
+    function copyToClipboard(text, message) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copyToast');
+        const msg = document.getElementById('toastMsg');
+        msg.textContent = message || '¡Copiado con éxito!';
+        toast.classList.remove('opacity-0', 'translate-y-[-15px]');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        setTimeout(() => {
+          toast.classList.remove('opacity-100', 'translate-y-0');
+          toast.classList.add('opacity-0', 'translate-y-[-15px]');
+        }, 2500);
+      });
+    }
+
+    // Floating Magical Mana Particles Canvas
+    const canvas = document.getElementById('manaCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.5 + 0.8;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = -(Math.random() * 0.5 + 0.2);
+        this.opacity = Math.random() * 0.5 + 0.1;
+        this.color = Math.random() > 0.4 ? '#c77dff' : '#9d4edd';
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.y < 0 || this.x < 0 || this.x > canvas.width) {
+          this.reset();
+          this.y = canvas.height + 10;
+        }
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.opacity;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particles) {
+        p.update();
+        p.draw();
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  </script>
 
 </body>
 </html>
