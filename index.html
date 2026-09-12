@@ -133,7 +133,7 @@
 
     /* Hero Section */
     .hero {
-      padding: 80px 0 60px;
+      padding: 80px 0 50px;
       text-align: center;
     }
 
@@ -192,7 +192,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     .btn {
@@ -249,7 +249,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
-      margin-bottom: 90px;
+      margin-bottom: 80px;
     }
 
     .stat-card {
@@ -309,6 +309,79 @@
       font-size: 2.2rem;
       font-weight: 800;
       letter-spacing: -0.8px;
+    }
+
+    /* Story Section */
+    .story-card {
+      background: linear-gradient(135deg, rgba(22, 19, 38, 0.85) 0%, rgba(15, 12, 28, 0.95) 100%);
+      border: 1px solid var(--border-hover);
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 100px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .story-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary-bright), var(--secondary));
+    }
+
+    .story-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .story-step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .story-step-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(157, 78, 221, 0.15);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .story-step-content h3 {
+      font-size: 1.25rem;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .story-year {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--secondary);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .story-step-content p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
     }
 
     /* Project Showcase */
@@ -648,6 +721,8 @@
 
     @media (max-width: 768px) {
       .hero { padding: 50px 0 40px; }
+      .story-card { padding: 32px 20px; }
+      .story-step { flex-direction: column; gap: 12px; }
       .contact-box { padding: 32px 20px; }
       .nav-links { display: none; }
     }
@@ -664,6 +739,7 @@
       </a>
       <nav class="nav-links">
         <a href="#about" class="nav-link">About</a>
+        <a href="#story" class="nav-link">My Story</a>
         <a href="#projects" class="nav-link">Plugins</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#services" class="nav-link">Commissions</a>
@@ -727,6 +803,49 @@
         <div class="stat-card">
           <div class="stat-number">2+</div>
           <div class="stat-label">Flagship Releases</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Story Section -->
+    <section id="story">
+      <div class="section-header">
+        <span class="section-badge">Behind The Code</span>
+        <h2 class="section-title">The Journey of Dafealru</h2>
+      </div>
+
+      <div class="story-card">
+        <p style="font-size: 1.15rem; color: #e2e8f0; line-height: 1.8; margin-bottom: 24px;">
+          Over <strong>4 years ago</strong>, I stepped into the Minecraft server scene as an ambitious builder and administrator. Like many server owners, I constantly faced the same nightmare: <strong>lag spikes, bloated plugins, destructive cleaners deleting player items, and unstable network setups.</strong>
+        </p>
+        <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.8;">
+          Instead of settling for poorly coded resources, I chose to master <strong>Java, the Spigot/Paper ecosystem, asynchronous concurrency, and database architecture</strong>. My mission became simple: build software where <em>performance never compromises the player experience</em>.
+        </p>
+
+        <div class="story-timeline">
+          <div class="story-step">
+            <div class="story-step-icon">🌱</div>
+            <div class="story-step-content">
+              <h3>The Spark & Foundations <span class="story-year">Year 1 – 2</span></h3>
+              <p>Started developing custom event-driven mechanics, mastering Bukkit/Spigot internals, MySQL integrations, and building proxy networks with BungeeCord to connect multiple game modes seamlessly.</p>
+            </div>
+          </div>
+
+          <div class="story-step">
+            <div class="story-step-icon">⚔️</div>
+            <div class="story-step-content">
+              <h3>Architecture, Security & Moderation <span class="story-year">Year 3</span></h3>
+              <p>Engineered comprehensive administrative suites like <strong>StaffCore</strong>. Focused on security hardening, anti-exploit protections, zero-leak memory management, and multi-language internationalization to empower staff teams worldwide.</p>
+            </div>
+          </div>
+
+          <div class="story-step">
+            <div class="story-step-icon">⚡</div>
+            <div class="story-step-content">
+              <h3>CleanPulse & The Next-Gen Anti-Lag Era <span class="story-year">Present</span></h3>
+              <p>Created <strong>CleanPulse</strong> (v2.0.0) — reinventing Minecraft performance with Zero-Loss Smart Purges, Game AI Mob Hibernation, and instant Root-Cause Lag Diagnostics. Today, I create tailored solutions for server owners and publish verified open-source tools across Modrinth and GitHub.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
