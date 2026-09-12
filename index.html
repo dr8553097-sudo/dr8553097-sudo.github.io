@@ -18,6 +18,7 @@
       --primary-bright: #c77dff;
       --secondary: #00f0ff;
       --emerald: #10b981;
+      --amber: #f59e0b;
       --spigot: #ee7c00;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
@@ -361,8 +362,8 @@
     /* Project Showcase */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
       margin-bottom: 100px;
     }
 
@@ -400,6 +401,22 @@
 
     .project-card:hover::before { opacity: 1; }
 
+    /* In Development Card Highlight */
+    .project-card-dev {
+      border-color: rgba(245, 158, 11, 0.35);
+      background: linear-gradient(135deg, rgba(28, 22, 42, 0.8) 0%, rgba(18, 14, 30, 0.9) 100%);
+    }
+
+    .project-card-dev::before {
+      background: linear-gradient(90deg, #f59e0b, #e11d48);
+      opacity: 0.7;
+    }
+
+    .project-card-dev:hover {
+      border-color: #f59e0b;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 158, 11, 0.2);
+    }
+
     .project-head {
       display: flex;
       align-items: center;
@@ -415,6 +432,15 @@
       border: 1px solid var(--border-color);
       object-fit: cover;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-icon-dev {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(225, 29, 72, 0.15));
+      border: 1px solid rgba(245, 158, 11, 0.4);
     }
 
     .project-title h3 {
@@ -433,6 +459,12 @@
       border-radius: 6px;
       display: inline-block;
       margin-top: 4px;
+    }
+
+    .project-version-dev {
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.4);
     }
 
     .project-desc {
@@ -475,6 +507,12 @@
       font-size: 0.75rem;
       padding: 4px 10px;
       border-radius: 6px;
+    }
+
+    .tech-tag-dev {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.25);
+      color: #fde68a;
     }
 
     .project-links {
@@ -526,6 +564,13 @@
 
     .project-btn-gh:hover {
       background: rgba(255, 255, 255, 0.15);
+    }
+
+    .project-btn-dev {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+      cursor: default;
     }
 
     /* Skills & Architecture */
@@ -739,7 +784,7 @@
         & Plugins Java Personalizados
       </h1>
       <p class="hero-subtitle">
-        Hola, soy <strong>Dafealru</strong> — <strong>Minecraft Server & Plugin Developer</strong> con <strong>4+ años</strong> de experiencia creando servidores sin lag, suites de moderación avanzadas, arquitecturas multi-servidor y optimización inteligente.
+        Hola, soy <strong>Dafealru</strong> — <strong>Minecraft Server & Plugin Developer</strong> con <strong>4+ años</strong> de experiencia creando servidores sin lag, suites de moderación avanzadas, arquitecturas multi-servidor y autenticación inteligente.
       </p>
 
       <div class="hero-actions">
@@ -780,8 +825,8 @@
           <div class="stat-label">Asíncrono & Sin Pérdidas</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">2+</div>
-          <div class="stat-label">Plugins Insignia</div>
+          <div class="stat-number">3</div>
+          <div class="stat-label">Plugins en Ecosistema</div>
         </div>
       </div>
     </section>
@@ -832,11 +877,48 @@
     <!-- Featured Plugins Section -->
     <section id="projects">
       <div class="section-header">
-        <span class="section-badge">Proyectos Publicados</span>
-        <h2 class="section-title">Plugins Insignia</h2>
+        <span class="section-badge">Proyectos y Software</span>
+        <h2 class="section-title">Ecosistema de Plugins</h2>
       </div>
 
       <div class="projects-grid">
+        <!-- SmartLogin Card (IN DEVELOPMENT HIGHLIGHT) -->
+        <div class="project-card project-card-dev">
+          <div>
+            <div class="project-head">
+              <div class="project-icon project-icon-dev">
+                🔐
+              </div>
+              <div class="project-title">
+                <h3>SmartLogin</h3>
+                <span class="project-version project-version-dev">🚧 EN DESARROLLO</span>
+              </div>
+            </div>
+            <p class="project-desc">
+              La suite definitiva de autenticación, identidad inteligente y ciberdefensa para Paper/Spigot 1.21.x. Reemplaza a los viejos plugins de login con auto-login para Premium/Bedrock y 2FA con mapa QR.
+            </p>
+            <ul class="features-list">
+              <li><span style="color: #fbbf24;">🔑</span> <strong>Tri-Mode Auto-Login:</strong> Cero comandos para cuentas Premium y Bedrock (Floodgate)</li>
+              <li><span style="color: #fbbf24;">📱</span> <strong>2FA con Mapa QR:</strong> Escaneo en tiempo real con Google Authenticator en el móvil</li>
+              <li><span style="color: #fbbf24;">🛡️</span> <strong>Teclado Visual PIN Pad:</strong> Menú GUI anti-streamer y anti-keylogger</li>
+              <li><span style="color: #fbbf24;">🔒</span> <strong>Criptografía Militar:</strong> Cifrado ultra-seguro con Argon2id + SHA-512</li>
+              <li><span style="color: #fbbf24;">🌍</span> <strong>GeoIP Session Shield:</strong> Detección de viajes imposibles y anti-fuerza bruta</li>
+            </ul>
+            <div class="tags-container">
+              <span class="tech-tag tech-tag-dev">Java 21</span>
+              <span class="tech-tag tech-tag-dev">Paper 1.21.x</span>
+              <span class="tech-tag tech-tag-dev">Argon2id</span>
+              <span class="tech-tag tech-tag-dev">2FA QR Map</span>
+              <span class="tech-tag tech-tag-dev">Bedrock Auto-Auth</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <span class="project-btn project-btn-dev">
+              ⚡ Próximamente en Modrinth & GitHub
+            </span>
+          </div>
+        </div>
+
         <!-- CleanPulse Card -->
         <div class="project-card">
           <div>
@@ -907,7 +989,7 @@
           <div class="project-links">
             <a href="https://www.spigotmc.org/resources/staffcore-advanced-staff-moderation-suite.134819/" target="_blank" class="project-btn project-btn-spigot">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L1.5 6v12L12 24l10.5-6V6L12 0zm0 2.3l8.2 4.7-3.7 2.1L8.3 4.4 12 2.3zM3.5 7.5L11 11.8v8.4L3.5 15.9V7.5zm17 8.4L13 20.2v-8.4l7.5-4.3v8.4z"/></svg>
-              Descargar en SpigotMC
+              SpigotMC
             </a>
             <a href="https://modrinth.com/plugin/staffcore-dafealru" target="_blank" class="project-btn project-btn-modrinth">
               Modrinth
