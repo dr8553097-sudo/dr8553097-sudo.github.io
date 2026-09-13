@@ -882,40 +882,43 @@
       </div>
 
       <div class="projects-grid">
-        <!-- SmartLogin Card (IN DEVELOPMENT HIGHLIGHT) -->
-        <div class="project-card project-card-dev">
+        <!-- SmartLogin Card (FLAGSHIP RELEASE) -->
+        <div class="project-card" style="border-color: rgba(157, 78, 221, 0.4); box-shadow: 0 10px 30px rgba(147, 51, 234, 0.15);">
           <div>
             <div class="project-head">
-              <div class="project-icon project-icon-dev">
-                🔐
-              </div>
+              <img src="smartlogin-icon.png" alt="SmartLogin Logo" class="project-icon" style="border-radius: 12px; border: 1px solid rgba(147, 51, 234, 0.3);">
               <div class="project-title">
                 <h3>SmartLogin</h3>
-                <span class="project-version project-version-dev">🚧 EN DESARROLLO</span>
+                <span class="project-version" style="background: rgba(147, 51, 234, 0.18); border-color: rgba(147, 51, 234, 0.4); color: #d8b4fe;">v1.0.0-BETA Flagship</span>
               </div>
             </div>
             <p class="project-desc">
-              La suite definitiva de autenticación, identidad inteligente y ciberdefensa para Paper/Spigot 1.21.x. Reemplaza a los viejos plugins de login con auto-login para Premium/Bedrock y 2FA con mapa QR.
+              La suite definitiva de autenticación, identidad inteligente y ciberdefensa militar para Paper/Purpur 1.21.x. Reemplaza a los viejos plugins con Argon2id, 2FA con mapa QR, PinPad táctil para Bedrock y Modo Streamer.
             </p>
             <ul class="features-list">
-              <li><span style="color: #fbbf24;">🔑</span> <strong>Tri-Mode Auto-Login:</strong> Cero comandos para cuentas Premium y Bedrock (Floodgate)</li>
-              <li><span style="color: #fbbf24;">📱</span> <strong>2FA con Mapa QR:</strong> Escaneo en tiempo real con Google Authenticator en el móvil</li>
-              <li><span style="color: #fbbf24;">🛡️</span> <strong>Teclado Visual PIN Pad:</strong> Menú GUI anti-streamer y anti-keylogger</li>
-              <li><span style="color: #fbbf24;">🔒</span> <strong>Criptografía Militar:</strong> Cifrado ultra-seguro con Argon2id + SHA-512</li>
-              <li><span style="color: #fbbf24;">🌍</span> <strong>GeoIP Session Shield:</strong> Detección de viajes imposibles y anti-fuerza bruta</li>
+              <li><span>🛡️</span> <strong>Criptografía Militar:</strong> Argon2id (OWASP), PBKDF2-SHA512 y BCrypt</li>
+              <li><span>📱</span> <strong>Suite 2FA Universal:</strong> Códigos QR en mapas, Bot de Discord (DM), Telegram y Email</li>
+              <li><span>🎮</span> <strong>Geyser / Floodgate Nativo:</strong> PinPad táctil y auto-login anti-spoofing</li>
+              <li><span>🎥</span> <strong>Modo Streamer Inteligente:</strong> Intercepción anti-leaks en chat y ofuscación de IPs</li>
+              <li><span>🚀</span> <strong>Migración en 1 Segundo:</strong> Importa AuthMe, nLogin y FastLogin en un comando (/sl migrate all)</li>
             </ul>
             <div class="tags-container">
-              <span class="tech-tag tech-tag-dev">Java 21</span>
-              <span class="tech-tag tech-tag-dev">Paper 1.21.x</span>
-              <span class="tech-tag tech-tag-dev">Argon2id</span>
-              <span class="tech-tag tech-tag-dev">2FA QR Map</span>
-              <span class="tech-tag tech-tag-dev">Bedrock Auto-Auth</span>
+              <span class="tech-tag" style="color: #c084fc; border-color: rgba(192, 132, 252, 0.3);">Java 21</span>
+              <span class="tech-tag" style="color: #c084fc; border-color: rgba(192, 132, 252, 0.3);">Paper 1.21.x</span>
+              <span class="tech-tag" style="color: #c084fc; border-color: rgba(192, 132, 252, 0.3);">Argon2id OWASP</span>
+              <span class="tech-tag" style="color: #c084fc; border-color: rgba(192, 132, 252, 0.3);">2FA QR Map</span>
+              <span class="tech-tag" style="color: #c084fc; border-color: rgba(192, 132, 252, 0.3);">Bedrock & Premium</span>
             </div>
           </div>
           <div class="project-links">
-            <span class="project-btn project-btn-dev">
-              ⚡ Próximamente en Modrinth & GitHub
-            </span>
+            <a href="https://modrinth.com/plugin/smartlogin-suite" target="_blank" class="project-btn project-btn-modrinth">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.252.004a11.78 11.78 0 0 0-2.502.274 11.386 11.386 0 0 0-4.34 2.054c-.21.16-.408.334-.595.522l3.447 3.447c.245-.2.507-.384.786-.549a6.046 6.046 0 0 1 3.204-.897c1.674 0 3.25.674 4.433 1.857 1.183 1.183 1.857 2.76 1.857 4.433 0 1.06-.27 2.08-.77 2.977l3.528 3.528c1.378-1.92 2.115-4.218 2.115-6.505 0-3.18-1.272-6.23-3.535-8.493A11.968 11.968 0 0 0 12.252.004z"/></svg>
+              Ver en Modrinth
+            </a>
+            <a href="https://github.com/dr8553097-sudo/SmartLogin" target="_blank" class="project-btn project-btn-gh">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub (v1.0.0-BETA)
+            </a>
           </div>
         </div>
 
